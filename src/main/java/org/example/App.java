@@ -46,11 +46,22 @@ public class App{
         autor2.setSurname("Mickiewicz");
         autor2.setAge(87);
         autor2.setNationality("Poland");
-        genericAutorDao.save(autor2);
+
 
         System.out.println("Sample movie get");
-        genericMovieDao.getById(1);
+        System.out.println(genericMovieDao.getById(1));
+
         System.out.println("Sample autor get");
+        System.out.println(genericAutorDao.getById(1));
+
+        System.out.println(autor2);
+        genericAutorDao.save(autor2);
+        autor2.setName("Nie ADAM!");
+        genericAutorDao.update(autor2);
+        System.out.println("Po update: " + genericAutorDao.getById(autor2.getId()));
+
+        genericAutorDao.delete(autor2);
+        System.out.println("DELETE: " + genericAutorDao.getById(autor2.getId()));;
 
         hibernateFactory.getSessionFactory().close();
         Thread.sleep(2000);
