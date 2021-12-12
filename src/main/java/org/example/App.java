@@ -46,8 +46,11 @@ public class App{
         autor2.setSurname("Mickiewicz");
         autor2.setAge(87);
         autor2.setNationality("Poland");
-
         genericAutorDao.save(autor2);
+
+        System.out.println("Sample movie get");
+        genericMovieDao.getById(1);
+        System.out.println("Sample autor get");
 
         hibernateFactory.getSessionFactory().close();
         Thread.sleep(2000);
