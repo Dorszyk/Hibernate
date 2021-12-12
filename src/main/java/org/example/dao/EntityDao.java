@@ -2,33 +2,32 @@ package org.example.dao;
 
 import lombok.AllArgsConstructor;
 import org.example.HibernateFactory;
-import org.example.model.Autor;
-import org.example.model.Movie;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 @AllArgsConstructor
-public class AutorDao {
+public class EntityDao <T> {
 
-    private HibernateFactory hibernateFactory;
+    private  HibernateFactory hibernateFactory;
+    private Class<T> clazz;
 
-    public void add (Autor autor){
+    public void save(T entity){
 
         SessionFactory sessionFactory = hibernateFactory.getSessionFactory();
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
-        session.save(autor);
+        session.save(entity);
         transaction.commit();
         session.close();
     }
 
-    public Autor getById(Integer id){
+    public T getById(Integer id){
+
         SessionFactory sessionFactory = hibernateFactory.getSessionFactory();
         Session session = sessionFactory.openSession();
-        Autor autor = session.find(Autor.class, id);
+        T entity = session.find(clazz, id);
         session.close();
-        return autor;
+        return entity;
     }
-
 }
