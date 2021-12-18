@@ -12,18 +12,14 @@ import javax.persistence.*;
 @Setter
 @NoArgsConstructor
 @ToString
-@Table(name = "MOVIE_TABLE")
 
-public class Movie {
+public class Reviewer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String title;
-    @Column(name = "PRODUCTION_YEAR")
-    private Integer productionYear;
-    private String type;
-    private Integer time;
+    private String name;
+    private String surname;
 
-    @OneToOne(mappedBy = "movie")
-    private  Reviewer reviewer;
+    @OneToOne
+    private Movie movie;
 }
