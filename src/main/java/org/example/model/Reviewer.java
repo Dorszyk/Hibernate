@@ -3,7 +3,6 @@ package org.example.model;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 
 import javax.persistence.*;
 
@@ -11,7 +10,6 @@ import javax.persistence.*;
 @Getter
 @Setter
 @NoArgsConstructor
-@ToString
 
 public class Reviewer {
     @Id
@@ -22,4 +20,8 @@ public class Reviewer {
 
     @OneToOne
     private Movie movie;
+
+    public String toString() {
+        return "Reviewer(id=" + this.getId() + ", name=" + this.getName() + ", surname=" + this.getSurname() + ", movie=" + this.getMovie() + ")";
+    }
 }

@@ -6,13 +6,14 @@ import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @ToString
-@Table(name = "MOVIE_AUTOR")
+
 
 public class Autor {
 
@@ -23,5 +24,8 @@ public class Autor {
    private String surname;
    private Integer age;
    private String nationality;
+
+   @OneToMany(mappedBy = "autor")
+   private List<Movie> movieList;
 
 }
