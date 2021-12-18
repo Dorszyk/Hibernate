@@ -25,7 +25,7 @@ public class Movie {
     @OneToOne(mappedBy = "movie")
     private  Reviewer reviewer;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private Autor autor;
 
     @ManyToMany

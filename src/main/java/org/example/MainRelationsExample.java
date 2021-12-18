@@ -3,10 +3,7 @@ package org.example;
 import org.example.dao.ActorDao;
 import org.example.dao.EntityDao;
 import org.example.dao.ReviewerDao;
-import org.example.model.Actor;
-import org.example.model.Autor;
-import org.example.model.Movie;
-import org.example.model.Reviewer;
+import org.example.model.*;
 
 import java.util.List;
 
@@ -32,10 +29,12 @@ public class MainRelationsExample {
         Actor actor = new Actor();
         actor.setName("Michał");
         actor.setSurname("Michalski");
+        actor.setRating(Rating.HIGH);
 
         Actor actor1 = new Actor();
         actor1.setName("Bartek");
         actor1.setSurname("Bartkowiak");
+        actor1.setRating(Rating.LOW);
 
         Movie titanic2 = new Movie();
         titanic2.setTitle("Titanic II");
