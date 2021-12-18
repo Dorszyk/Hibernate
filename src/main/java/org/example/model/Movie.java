@@ -3,8 +3,8 @@ package org.example.model;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Getter
@@ -27,6 +27,9 @@ public class Movie {
 
     @ManyToOne
     private Autor autor;
+
+    @ManyToMany
+    private List<Actor> actors;
 
     public String toString() {
         return "Movie(id=" + this.getId() + ", title=" + this.getTitle() + ", productionYear=" + this.getProductionYear() + ", type=" + this.getType() + ", time=" + this.getTime() + ")";

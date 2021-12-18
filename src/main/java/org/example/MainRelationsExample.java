@@ -1,10 +1,14 @@
 package org.example;
 
+import org.example.dao.ActorDao;
 import org.example.dao.EntityDao;
 import org.example.dao.ReviewerDao;
+import org.example.model.Actor;
 import org.example.model.Autor;
 import org.example.model.Movie;
 import org.example.model.Reviewer;
+
+import java.util.List;
 
 public class MainRelationsExample {
 
@@ -13,17 +17,45 @@ public class MainRelationsExample {
         ReviewerDao reviewerDao = new ReviewerDao(hibernateFactory, Reviewer.class);
         EntityDao<Movie> movieDao = new EntityDao<>(hibernateFactory, Movie.class);
         EntityDao<Autor> autorDao = new EntityDao<>(hibernateFactory, Autor.class);
+        ActorDao actorDao = new ActorDao(hibernateFactory);
 
         savingOneToOne(reviewerDao, movieDao);
-        savingOneToMany(autorDao,movieDao);
-
+        savingOneToMany(autorDao, movieDao);
+        savingManyToMany(actorDao,movieDao);
 
         hibernateFactory.getSessionFactory().close();
+
+    }
+
+    private static void savingManyToMany(ActorDao actorDao, EntityDao<Movie> movieDao) {
+
+        Actor actor = new Actor();
+        actor.setName("Michał");
+        actor.setSurname("Michalski");
+
+        Actor actor1 = new Actor();
+        actor1.setName("Bartek");
+        actor1.setSurname("Bartkowiak");
+
+        Movie titanic2 = new Movie();
+        titanic2.setTitle("Titanic II");
+
+        Movie titanic3 = new Movie();
+        titanic3.setTitle("Titanic III");
+
+        titanic2.setActors(List.of(actor,actor1));
+
+        actorDao.save(actor);
+        actorDao.save(actor1);
+        movieDao.save(titanic2);
+        movieDao.save(titanic3);
+
+
 
 
     }
 
-    private  static void savingOneToMany(EntityDao<Autor> autorDao, EntityDao<Movie> movieDao) {
+    private static void savingOneToMany(EntityDao<Autor> autorDao, EntityDao<Movie> movieDao) {
 
         Autor autor = new Autor();
         autor.setName("Piotr");
