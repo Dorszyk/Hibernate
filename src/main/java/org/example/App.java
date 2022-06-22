@@ -1,4 +1,5 @@
 package org.example;
+import org.example.crud.Car;
 import org.example.dao.AutorDao;
 import org.example.dao.EntityDao;
 import org.example.dao.MovieDao;
@@ -65,5 +66,7 @@ public class App{
 
         hibernateFactory.getSessionFactory().close();
         Thread.sleep(2000);
+
+
     }
 }

@@ -3,7 +3,6 @@ package org.example.model;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.List;
@@ -12,7 +11,6 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
-@ToString
 
 
 public class Autor {
@@ -28,4 +26,13 @@ public class Autor {
    @OneToMany(mappedBy = "autor")
    private List<Movie> movieList;
 
+    @Override
+    public String toString() {
+        return getClass().getSimpleName() + "(" +
+                "id = " + id + ", " +
+                "name = " + name + ", " +
+                "surname = " + surname + ", " +
+                "age = " + age + ", " +
+                "nationality = " + nationality + ")";
+    }
 }

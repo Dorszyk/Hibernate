@@ -4,6 +4,8 @@ import org.example.dao.AutorDao;
 import org.example.dao.MovieDao;
 import org.example.model.Autor;
 import org.example.model.Movie;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
 
 import java.util.List;
 

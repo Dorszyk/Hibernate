@@ -1,9 +1,6 @@
 package org.example;
 
-import org.example.model.Actor;
-import org.example.model.Autor;
-import org.example.model.Movie;
-import org.example.model.Reviewer;
+import org.example.model.*;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
@@ -24,6 +21,7 @@ public class HibernateFactory {
 		configuration.addAnnotatedClass(Autor.class);
 		configuration.addAnnotatedClass(Reviewer.class);
 		configuration.addAnnotatedClass(Actor.class);
+		configuration.addAnnotatedClass(Teacher.class);
 
 		return configuration;
 	}
